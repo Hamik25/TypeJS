@@ -1,0 +1,23 @@
+{
+  "name": "TypeJS",
+  "version": "1.0.0",
+  "description": "description here",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap --coverage test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hamik25/TypeJS.git"
+  },
+  "keywords": [],
+  "author": "Hamik Hambardzumyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hamik25/TypeJS/issues"
+  },
+  "homepage": "https://github.com/Hamik25/TypeJS#readme",
+  "devDependencies": {
+    "tap": "^11.1.0"
+  }
+}
