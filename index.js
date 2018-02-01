@@ -1,5 +1,1 @@
-var TypeJS = function() {
-  return 'Hello from TypeJS';
-};
-
-module.exports = TypeJS;
+module.exports = require('./TypeJS');
