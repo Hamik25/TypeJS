@@ -1,9 +1,21 @@
 const test = require('tap').test;
 
-const TypeJS = require('../index');
+const TypeJS = require('../TypeJS');
 
-test('smoke test', function(t) {
-  const string = TypeJS();
-  t.is(typeof string, 'string');
-  t.end();
+test('Test String', function(t) {
+	let x = 'ads';
+	t.is(x._TypeJS, 'String');
+  	t.end();
+});
+
+test('Test Array', function(t) {
+	let x = [0, 1, 5];
+	t.is(x._TypeJS, 'Array');
+  	t.end();
+});
+
+test('Test Number', function(t) {
+	let x = 8;
+	t.is(x._TypeJS, 'Number');
+  	t.end();
 });
