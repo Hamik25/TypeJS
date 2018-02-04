@@ -1,3 +1,6 @@
+### TravisCI
+[![Build Status](https://travis-ci.org/Hamik25/TypeJS.svg?branch=master)](https://travis-ci.org/Hamik25/TypeJS)
+
 # TypeJS
 
 > description here
