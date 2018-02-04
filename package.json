@@ -6,7 +6,7 @@
   "scripts": {
     "build": "cd ./configs && webpack",
     "start": "cd ./configs && webpack --watch",
-    "test": "cd ./configs && jest --config=jest.config.json"
+    "test": "cd ./configs && jest --config jest.config.json"
   },
   "repository": {
     "type": "git",
