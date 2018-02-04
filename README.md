@@ -5,7 +5,7 @@
 ## Usage
 
 #### CDN
-Link  [https://cdn.rawgit.com/Hamik25/TypeJS/master/index.js]
+Link  [https://cdn.rawgit.com/Hamik25/TypeJS/master/dist/bundle.js]
 
 #### NPM
 ```js
