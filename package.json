@@ -4,7 +4,9 @@
   "description": "description here",
   "main": "index.js",
   "scripts": {
-    "test": "tap --coverage test/index.js"
+    "build": "cd ./configs && webpack",
+    "start": "cd ./configs && webpack --watch",
+    "test": "cd ./configs && jest --config=jest.config.json"
   },
   "repository": {
     "type": "git",
@@ -18,6 +20,10 @@
   },
   "homepage": "https://github.com/Hamik25/TypeJS#readme",
   "devDependencies": {
-    "tap": "^11.1.0"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^22.1.4"
   }
 }
