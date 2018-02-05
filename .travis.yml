@@ -18,3 +18,5 @@ deploy:
   provider: npm
   email: "hamikhambardzumyan25@gmail.com"
   api_key: "21d0fa58-f2a7-4e6a-9db8-1bd653a2f5b2"
+  on:
+    branch: master
