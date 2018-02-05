@@ -7,7 +7,7 @@
     "build": "cd ./configs && webpack",
     "start": "cd ./configs && webpack --watch",
     "test": "cd ./configs && jest --config jest.config.json",
-    "coverage": "cd ./configs && jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coverage": "cd ./configs && jest --coverage && cat ../coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
