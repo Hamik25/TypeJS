@@ -6,7 +6,8 @@
   "scripts": {
     "build": "cd ./configs && webpack",
     "start": "cd ./configs && webpack --watch",
-    "test": "cd ./configs && jest --config jest.config.json"
+    "test": "cd ./configs && jest --config jest.config.json",
+    "coverage": "cd ./configs && jest --coverage && cat ../coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "coveralls": "^3.0.0",
     "jest": "^22.1.4"
   }
 }
