@@ -1,5 +1,6 @@
 ### TravisCI
 [![Build Status](https://travis-ci.org/Hamik25/TypeJS.svg?branch=master)](https://travis-ci.org/Hamik25/TypeJS)
+[![Coverage Status](https://coveralls.io/repos/github/Hamik25/TypeJS/badge.svg)](https://coveralls.io/github/Hamik25/TypeJS)
 
 # TypeJS
 
