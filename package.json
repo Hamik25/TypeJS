@@ -2,7 +2,7 @@
   "name": " js-type-helper",
   "version": "0.0.1",
   "description": "description here",
-  "main": "index.js",
+  "main": "./dist/bundle.js",
   "scripts": {
     "build": "cd ./configs && webpack",
     "start": "cd ./configs && webpack --watch",

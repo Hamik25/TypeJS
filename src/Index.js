@@ -3,15 +3,15 @@
 */
 
 // Imports
-import _TypeJS from './Type';
+import TypeJS from './Type';
 
 ;(function() {
 	var ENVIRONMENT;
 	var LIB_NAME = '_TypeJS';
 
-	/*-----------------------
+	/*---------------------
 	*	Detect environment.	*
-	*-----------------------*/
+	*---------------------*/
 	var isBrowser = new Function("try {return this === window;} catch(e) { return false; }");
 	var isNodeJS  = new Function("try {return this === global;} catch(e) { return false; }");
 
@@ -19,12 +19,64 @@ import _TypeJS from './Type';
 		ENVIRONMENT = window;
 	} else if (isNodeJS()) {
 		ENVIRONMENT = global;
-	}	
+	}
 
-	(function(env) {
+	/*-------------------------
+	*	New instance of library	*
+	*-------------------------*/
+	const typeJS = new TypeJS(ENVIRONMENT, LIB_NAME);
 
-		const typeJS = new _TypeJS(env, LIB_NAME);
-		typeJS.init();
+	/*-----------------------------
+	*	Export for a AMD, CommonJS.	*
+	*-----------------------------*/
+	if (typeof ENVIRONMENT.module !== 'undefined' && typeof ENVIRONMENT.module.exports !== 'undefined') {
+		// CommonJS
+		ENVIRONMENT.module.exports = typeJS;
+	} else {
+		if (typeof ENVIRONMENT.define === 'function' && ENVIRONMENT.define.amd) {
+			// AMD
+			define([], function() {
+				return { [LIB_NAME]: typeJS };
+			});
 
-	})(ENVIRONMENT);
+		} else {
+			// Browser
+			ENVIRONMENT[LIB_NAME] = typeJS;
+		}
+	}
+
 }());
+
+
+
+// init() {
+// 	Object.defineProperty(this.env.Array.prototype, [this.libName], {
+// 		value: 'Array',
+// 		writable: false,
+// 		configurable: false,
+// 		enumerable: true
+// 	});
+//
+// 	Object.defineProperty(this.env.Number.prototype, [this.libName], {
+// 		configurable: false,
+// 		enumerable: true,
+// 		get: function() {
+// 			return parseInt(this.toString()) === parseInt(this.toString()) ? 'Number' : this.toString();
+// 		}
+// 	});
+//
+// 	Object.defineProperty(this.env.String.prototype, [this.libName], {
+// 		value: 'String',
+// 		writable: false,
+// 		configurable: false,
+// 		enumerable: true
+// 	});
+//
+// 	Object.defineProperty(this.env.Object.prototype, [this.libName], {
+// 		configurable: false,
+// 		enumerable: true,
+// 		get: function() {
+// 			return this.constructor.name;
+// 		}
+// 	});
+// }

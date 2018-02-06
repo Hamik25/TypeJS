@@ -1,42 +1,26 @@
-class _TypeJS {
+import { Types } from './enums'
+
+class TypeJS {
 
   constructor(environment, libName) {
     this.env = environment;
     this.libName = libName;
+    this.version = '';
   }
 
-  init() {
+  getType(variable) {
+    // here need execute logic for geting correct type
+    return variable;
+  }
 
-    Object.defineProperty(this.env.Array.prototype, [this.libName], {
-			value: 'Array',
-			writable: false,
-			configurable: false,
-			enumerable: true
-		});
+  typeChecker(variable) {
 
-		Object.defineProperty(this.env.Number.prototype, [this.libName], {
-			configurable: false,
-			enumerable: true,
-			get: function() {
-				return parseInt(this.toString()) === parseInt(this.toString()) ? 'Number' : this.toString();
-			}
-		});
+  }
 
-		Object.defineProperty(this.env.String.prototype, [this.libName], {
-			value: 'String',
-			writable: false,
-			configurable: false,
-			enumerable: true
-		});
-
-		Object.defineProperty(this.env.Object.prototype, [this.libName], {
-			configurable: false,
-			enumerable: true,
-			get: function() {
-				return this.constructor.name;
-			}
-		});
+  typeMaper(type) {
+    // maper is a return human readable text type
+    return Types[type];
   }
 }
 
-export default _TypeJS;
+export default TypeJS;
