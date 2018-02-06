@@ -22,6 +22,11 @@ Library support both (AMD, CommonJS)
 $ npm install js-type-helper
 ```
 
+#### Yarn
+```js
+$ yarn add js-type-helper
+```
+
 ## Code Examples
 ```js
 const foo = '';
