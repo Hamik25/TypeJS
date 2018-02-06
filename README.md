@@ -22,7 +22,7 @@ Library support both (AMD, CommonJS)
 $ npm install js-type-helper
 ```
 
-#### Code Examples
+## Code Examples
 ```js
 const foo = '';
 
