@@ -30,3 +30,5 @@ foo._TypeJS // String
 ```
 
 ## License
+
+[MIT](https://github.com/Hamik25/TypeJS/blob/dev/LICENSE)
