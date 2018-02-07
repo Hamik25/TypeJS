@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "description here",
   "main": "./index.js",
-  "module": "./src/Index.js",
+  "module": "./src/index.js",
   "scripts": {
     "build": "cd ./configs && webpack",
     "start": "cd ./configs && webpack --watch",

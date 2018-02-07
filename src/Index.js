@@ -1,53 +1,32 @@
 // MIT LICENCE.
 
-
 // Imports
 import TypeJS from './Type';
 
-;(function() {
-	var ENVIRONMENT;
-	var LIB_NAME = 'TypeJS';
+let pjson = require('../package.json');
 
-	/*---------------------
-	*	Detect environment.	*
-	*---------------------*/
-	var isBrowser = new Function("try {return this === window;} catch(e) { return false; }");
-	var isNodeJS  = new Function("try {return this === global;} catch(e) { return false; }");
+let ENVIRONMENT;
+let LIB_NAME = 'TypeJS';
+let VERSION = pjson.version;
 
-	if (isBrowser()) {
-		ENVIRONMENT = window;
-	} else if (isNodeJS()) {
-		ENVIRONMENT = global;
-	}
+/*---------------------
+*	Detect environment.	*
+*---------------------*/
+let isBrowser = new Function("try {return this === window;} catch(e) { return false; }");
+let isNodeJS  = new Function("try {return this === global;} catch(e) { return false; }");
 
-	/*-------------------------
-	*	New instance of library	*
-	*-------------------------*/
-	const typeJS = new TypeJS(ENVIRONMENT, LIB_NAME);
+if (isBrowser()) {
+	ENVIRONMENT = window;
+} else if (isNodeJS()) {
+	ENVIRONMENT = global;
+}
 
-	/*-----------------------------
-	*	Export for a AMD, CommonJS.	*
-	*-----------------------------*/
-	// if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-	// 	// CommonJS
-	// 	module.exports = typeJS;
-	// } else {
-	// 	if (typeof define === 'function' && define.amd) {
-	// 		// AMD
-	// 		define([], function() {
-	// 			return typeJS;
-	// 		});
-  //
-	// 	} else {
-	// 		// Browser
-	// 		ENVIRONMENT[LIB_NAME] = typeJS;
-	// 	}
-	// }
-	ENVIRONMENT[LIB_NAME] = typeJS;
+/*-------------------------
+*	New instance of library	*
+*-------------------------*/
+const typeJS = new TypeJS(ENVIRONMENT, LIB_NAME, VERSION);
 
-}());
-
-
+module.exports = typeJS;
 
 // init() {
 // 	Object.defineProperty(this.env.Array.prototype, [this.libName], {
