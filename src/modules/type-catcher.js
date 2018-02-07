@@ -7,7 +7,7 @@
  * @return {number} [id of data type for geting type name by typeMaper].
  */
 const typeCatcher = function(variable) {
-  return variable;
+  return typeof(variable);
 }
 
 export { typeCatcher }

@@ -36,9 +36,9 @@
 //   	t.end();
 // });
 
-// const TypeJS = require('../index');
-//
-// test('Test String', function() {
-//   	let x = 'ads';
-//   	expect(x._TypeJS).toBe('String');
-// });
+const TypeJS = require('../index');
+
+test('Test String', function() {
+  	let x = 'ads';
+  	expect(TypeJS.getType(x)).toBe('String');
+});
