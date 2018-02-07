@@ -1,3 +1,2 @@
-// module.exports = require('./TypeJS');
-
-const _TypeJS = require('./dist/bundle');
+const TypeJS = require('./dist/bundle');
+module.exports = TypeJS;

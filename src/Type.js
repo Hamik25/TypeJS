@@ -1,42 +1,36 @@
-class _TypeJS {
+import { Types } from './enums'
 
-  constructor(environment, libName) {
+import { typeCatcher, typeMaper } from './modules'
+
+/**
+ * TypeJS
+ */
+class TypeJS {
+
+  /**
+   * @param {object}	environment - this is the parameter environment.
+   * @param {string}	libName - this is the parameter libName.
+   */
+  constructor(environment, libName, version) {
     this.env = environment;
     this.libName = libName;
+    this.version = version;
   }
 
-  init() {
-
-    Object.defineProperty(this.env.Array.prototype, [this.libName], {
-			value: 'Array',
-			writable: false,
-			configurable: false,
-			enumerable: true
-		});
-
-		Object.defineProperty(this.env.Number.prototype, [this.libName], {
-			configurable: false,
-			enumerable: true,
-			get: function() {
-				return parseInt(this.toString()) === parseInt(this.toString()) ? 'Number' : this.toString();
-			}
-		});
-
-		Object.defineProperty(this.env.String.prototype, [this.libName], {
-			value: 'String',
-			writable: false,
-			configurable: false,
-			enumerable: true
-		});
-
-		Object.defineProperty(this.env.Object.prototype, [this.libName], {
-			configurable: false,
-			enumerable: true,
-			get: function() {
-				return this.constructor.name;
-			}
-		});
+  /**
+   * getType method is a entry point for getting data type.
+   *
+   * @param {any}	variable - this is the parameter variable.
+   *
+   * @return {string} [variable data type.]
+   */
+  getType(variable) {
+    // here need execute logic for geting correct type
+    let catchedTypeId = typeCatcher(variable);
+    return typeMaper(catchedTypeId);
   }
+
 }
 
-export default _TypeJS;
+
+export default TypeJS;

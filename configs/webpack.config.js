@@ -2,10 +2,13 @@ const path = require('path');
 const baseDir = '../';
 
 module.exports = {
-  entry: path.resolve(baseDir, 'src/Index.js'),
+  entry: path.resolve(baseDir, 'src/index.js'),
   output: {
     filename: 'bundle.js',
-    path: path.resolve(baseDir, 'dist')
+    path: path.resolve(baseDir, 'dist'),
+    library: 'TypeJS',
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
   module: {
     loaders: [
@@ -19,5 +22,6 @@ module.exports = {
             }
         }
     ]
-  }
+  },
+  devtool: '#inline-source-map'
 };

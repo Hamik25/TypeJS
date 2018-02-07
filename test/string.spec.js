@@ -36,9 +36,9 @@
 //   	t.end();
 // });
 
-const _TypeJS = require('../index');
+const TypeJS = require('../index');
 
 test('Test String', function() {
   	let x = 'ads';
-  	expect(x._TypeJS).toBe('String');
+  	expect(TypeJS.getType(x)).toBe('String');
 });
