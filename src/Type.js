@@ -10,11 +10,16 @@ class TypeJS {
 
   getType(variable) {
     // here need execute logic for geting correct type
-    return variable;
+    let catchedTypeId = typeCatcher(variable);
+    return typeMaper(catchedTypeId);
   }
 
   typeChecker(variable) {
+    switch(variable) {
+      case expression:
 
+        break;
+    }
   }
 
   typeMaper(type) {

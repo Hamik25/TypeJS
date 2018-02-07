@@ -1,13 +1,12 @@
-/*
-*	Here will be writen LICENCE.
-*/
+// MIT LICENCE.
+
 
 // Imports
 import TypeJS from './Type';
 
 ;(function() {
 	var ENVIRONMENT;
-	var LIB_NAME = '_TypeJS';
+	var LIB_NAME = 'TypeJS';
 
 	/*---------------------
 	*	Detect environment.	*
@@ -29,21 +28,22 @@ import TypeJS from './Type';
 	/*-----------------------------
 	*	Export for a AMD, CommonJS.	*
 	*-----------------------------*/
-	if (typeof ENVIRONMENT.module !== 'undefined' && typeof ENVIRONMENT.module.exports !== 'undefined') {
-		// CommonJS
-		ENVIRONMENT.module.exports = typeJS;
-	} else {
-		if (typeof ENVIRONMENT.define === 'function' && ENVIRONMENT.define.amd) {
-			// AMD
-			define([], function() {
-				return { [LIB_NAME]: typeJS };
-			});
-
-		} else {
-			// Browser
-			ENVIRONMENT[LIB_NAME] = typeJS;
-		}
-	}
+	// if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+	// 	// CommonJS
+	// 	module.exports = typeJS;
+	// } else {
+	// 	if (typeof define === 'function' && define.amd) {
+	// 		// AMD
+	// 		define([], function() {
+	// 			return typeJS;
+	// 		});
+  //
+	// 	} else {
+	// 		// Browser
+	// 		ENVIRONMENT[LIB_NAME] = typeJS;
+	// 	}
+	// }
+	ENVIRONMENT[LIB_NAME] = typeJS;
 
 }());
 
