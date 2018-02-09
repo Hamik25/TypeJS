@@ -80,9 +80,14 @@ test('Test Boolean Type', function() {
 });
 
 // TODO implement NaN value test
-test('Test Number', function() {
+test('Test Int', function() {
   let x = 4;
-  expect(TypeJS.getType(x)).toBe('Number');
+  expect(TypeJS.getType(x)).toBe('Int');
+});
+
+test('Test Float', function() {
+  let x = 4.98;
+  expect(TypeJS.getType(x)).toBe('Float');
 });
 
 test('Test Infinity', function() {

@@ -87,6 +87,9 @@ const matchBoolean = variable => {
 // TODO implement corect logic for support NaN.
 const matchNumber = variable => {
   let typeId = parseInt(variable.toString()) === parseInt(variable.toString()) ? 'number' : variable.toString();
+  if (typeId === 'number') {
+    typeId = variable % 1 === 0 ? 'int' : 'float';
+  }
   let matchObjectModel = new MatchObjectModel(variable, typeId);
   return matchObjectModel;
 }
