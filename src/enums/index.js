@@ -1,17 +1,17 @@
 const Types = {
   'string': 'String',
   'number': 'Number',
-  'NaN': 'NaN',
   'Infinity': 'Infinity',
   '-Infinity': '-Infinity',
+  'NaN': 'NaN',
+  'int': 'Int',
+  'float': 'Float',
   'object': 'Object',
   'null': 'Null',
-  'undefined': 'undefined',
+  'undefined': 'Undefined',
   'boolean': 'Boolean',
   'array': 'Array',
   'function': 'Function',
-  'int': 'Int',
-  'float': 'Float',
   'date': 'Date'
 }
 
