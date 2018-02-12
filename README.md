@@ -12,6 +12,8 @@ Library support both (AMD, CommonJS)
 [![npm version](https://badge.fury.io/js/js-type-helper.svg)](https://badge.fury.io/js/js-type-helper)
 [![GitHub version](https://badge.fury.io/gh/Hamik25%2FTypeJS.svg)](https://badge.fury.io/gh/Hamik25%2FTypeJS)
 
+## Install
+
 #### CDN
 ```html
 <script type="text/javascript" src="https://cdn.rawgit.com/Hamik25/TypeJS/master/dist/bundle.js"></script>
