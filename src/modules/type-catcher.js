@@ -13,117 +13,149 @@ const typeCatcher = function(variable) {
   let catchedTypeId = '';
   let tmpMatchObject = {};
 
-  switch (variable) {
+  let caseKey = caseKeyGenerator();
 
-    case (tmpMatchObject = matchString(variable)) && tmpMatchObject.value:
+  switch(caseKey) {
+
+    case (tmpMatchObject = matchNumber(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
-    case (tmpMatchObject = matchArray(variable)) && tmpMatchObject.value:
+    case (tmpMatchObject = matchString(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
-    case (tmpMatchObject = matchFunction(variable)) && tmpMatchObject.value:
+    case (tmpMatchObject = matchArray(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
-    case (tmpMatchObject = matchUndefined(variable)) && tmpMatchObject.value:
+    case (tmpMatchObject = matchFunction(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
-    case (tmpMatchObject = matchDate(variable)) && tmpMatchObject.value:
+    case (tmpMatchObject = matchDate(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
-    // TODO
-    case (tmpMatchObject = matchBoolean(variable)) && tmpMatchObject.value:
+    case (tmpMatchObject = matchBoolean(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
-    // TODO
-    case (tmpMatchObject = matchNumber(variable)) && tmpMatchObject.value:
+    case (tmpMatchObject = matchObject(variable, caseKey)) && tmpMatchObject.caseKey:
       catchedTypeId = tmpMatchObject.type;
       break;
 
+    // Handle static values case.
+    case (variable += '') && ('NaN' || 'Infinity' || '-Infinity' || 'null' || 'undefined') && (caseKey):
+      catchedTypeId = variable;
+      break;
+
+    default:
+      catchedTypeId = 'notCatchatedType';
+      break;
   }
 
   return catchedTypeId;
 }
 
-const matchString = variable => {
-  let matchObjectModel = new MatchObjectModel(variable, typeof variable);
-  return (matchObjectModel.type === 'string') ? matchObjectModel : false;
+/**
+ * caseKeyGenerator is a generate unic key for each call.
+ *
+ * @return {string} text generated unic key.
+ */
+const caseKeyGenerator = () => {
+  let text = '';
+  let possibleSymbols = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (let i = 0; i < 5; i++) {
+    text += possibleSymbols.charAt(Math.floor(Math.random() * possibleSymbols.length));
+  }
+
+  return text;
 }
 
-const matchArray = variable => {
+/**
+* Matchers logic part.
+*/
+
+const matchString = (variable, caseKey) => {
+  let matchObjectModel = new MatchObjectModel(variable, typeof variable);
+
+  if (matchObjectModel.type === 'string') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
+  return matchObjectModel;
+}
+
+const matchArray = (variable, caseKey) => {
   let typeId = variable && variable.constructor.name === 'Array' && 'array';
   let matchObjectModel = new MatchObjectModel(variable, typeId);
-  return (matchObjectModel.type === 'array') ? matchObjectModel : false;
+
+  if (matchObjectModel.type === 'array') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
+  return matchObjectModel;
 }
 
-const matchFunction = variable => {
+const matchFunction = (variable, caseKey) => {
   let typeId = variable && variable.constructor.name === 'Function' && 'function';
   let matchObjectModel = new MatchObjectModel(variable, typeId);
-  return (matchObjectModel.type === 'function') ? matchObjectModel : false;
+
+  if (matchObjectModel.type === 'function') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
+  return matchObjectModel;
 }
 
-const matchUndefined = variable => {
-  let matchObjectModel = new MatchObjectModel(variable, typeof variable);
-  return (matchObjectModel.type === 'undefined') ? matchObjectModel : false;
-}
-
-const matchDate = variable => {
+const matchDate = (variable, caseKey) => {
   let typeId = variable && variable.constructor.name === 'Date' && 'date';
   let matchObjectModel = new MatchObjectModel(variable, typeId);
-  return (matchObjectModel.type === 'date') ? matchObjectModel : false;
+
+  if (matchObjectModel.type === 'date') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
+  return matchObjectModel;
 }
 
-// TODO implement corect logic for support false.
-const matchBoolean = variable => {
+const matchBoolean = (variable, caseKey) => {
   let matchObjectModel = new MatchObjectModel(variable, typeof variable);
-  return (matchObjectModel.type === 'boolean') ? matchObjectModel : false;
+
+  if (matchObjectModel.type === 'boolean') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
+  return matchObjectModel;
 }
 
-// TODO implement corect logic for support NaN.
-const matchNumber = variable => {
-  let typeId = parseInt(variable.toString()) === parseInt(variable.toString()) ? 'number' : variable.toString();
+const matchNumber = (variable, caseKey) => {
+  let typeId = typeof variable === 'number' && parseInt(variable.toString()) === parseInt(variable.toString()) && 'number';
+
   if (typeId === 'number') {
     typeId = variable % 1 === 0 ? 'int' : 'float';
   }
+
   let matchObjectModel = new MatchObjectModel(variable, typeId);
+
+  if (matchObjectModel.type === 'int' || matchObjectModel.type === 'float') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
+  return matchObjectModel;
+}
+
+const matchObject = (variable, caseKey) => {
+  let typeId = typeof variable === 'object' && variable !== null && 'object';
+  let matchObjectModel = new MatchObjectModel(variable, typeId);
+
+  if (matchObjectModel.type === 'object') {
+    matchObjectModel.caseKey = caseKey;
+  }
+
   return matchObjectModel;
 }
 
 export { typeCatcher }
-
-// init() {
-// 	Object.defineProperty(this.env.Array.prototype, [this.libName], {
-// 		value: 'Array',
-// 		writable: false,
-// 		configurable: false,
-// 		enumerable: true
-// 	});
-//
-// 	Object.defineProperty(this.env.Number.prototype, [this.libName], {
-// 		configurable: false,
-// 		enumerable: true,
-// 		get: function() {
-// 			return parseInt(this.toString()) === parseInt(this.toString()) ? 'Number' : this.toString();
-// 		}
-// 	});
-//
-// 	Object.defineProperty(this.env.String.prototype, [this.libName], {
-// 		value: 'String',
-// 		writable: false,
-// 		configurable: false,
-// 		enumerable: true
-// 	});
-//
-// 	Object.defineProperty(this.env.Object.prototype, [this.libName], {
-// 		configurable: false,
-// 		enumerable: true,
-// 		get: function() {
-// 			return this.constructor.name;
-// 		}
-// 	});
-// }

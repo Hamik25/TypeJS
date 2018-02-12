@@ -1,6 +1,5 @@
 const Types = {
   'string': 'String',
-  'number': 'Number',
   'Infinity': 'Infinity',
   '-Infinity': '-Infinity',
   'NaN': 'NaN',
@@ -12,7 +11,8 @@ const Types = {
   'boolean': 'Boolean',
   'array': 'Array',
   'function': 'Function',
-  'date': 'Date'
+  'date': 'Date',
+  'notCatchatedType': 'Sorry type is not found'
 }
 
 export { Types }

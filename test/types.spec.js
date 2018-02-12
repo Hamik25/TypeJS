@@ -1,41 +1,3 @@
-// change test lib to jest
-
-// const test = require('tap').test;
-
-// const TypeJS = require('../TypeJS');
-
-// test('Test String', function(t) {
-// 	let x = 'ads';
-// 	t.is(x._TypeJS, 'String');
-//   	t.end();
-// });
-
-// test('Test Array', function(t) {
-// 	let x = [0, 1, 5];
-// 	t.is(x._TypeJS, 'Array');
-//   	t.end();
-// });
-
-// test('Test Number', function(t) {
-// 	let x = 8;
-// 	t.is(x._TypeJS, 'Number');
-//   	t.end();
-// });
-
-// test('Test Infinity', function(t) {
-// 	let x = 8 / 0;
-// 	let y = -90 / 0;
-// 	t.is(x._TypeJS, 'Infinity');
-// 	t.is(y._TypeJS, '-Infinity');
-//   	t.end();
-// });
-
-// test('Test NaN', function(t) {
-// 	let x = 8 * 'foo';
-// 	t.is(x._TypeJS, 'NaN');
-//   	t.end();
-// });
-
 const TypeJS = require('../index');
 
 test('Test String Type', function() {
@@ -71,15 +33,13 @@ test('Test Date Type', function() {
   expect(TypeJS.getType(x)).toBe('Date');
 });
 
-
-// TODO implement false value test
 test('Test Boolean Type', function() {
   let x = true;
-
+  let y = false;
   expect(TypeJS.getType(x)).toBe('Boolean');
+  expect(TypeJS.getType(y)).toBe('Boolean');
 });
 
-// TODO implement NaN value test
 test('Test Int', function() {
   let x = 4;
   expect(TypeJS.getType(x)).toBe('Int');
@@ -98,4 +58,19 @@ test('Test Infinity', function() {
 test('Test -Infinity', function() {
   let x = -4 / 0;
   expect(TypeJS.getType(x)).toBe('-Infinity');
+});
+
+test('Test NaN', function() {
+  let x = 45 / 'stas';
+  expect(TypeJS.getType(x)).toBe('NaN');
+});
+
+test('Test Null', function() {
+  let x = null;
+  expect(TypeJS.getType(x)).toBe('Null');
+});
+
+test('Test Object', function() {
+  let x = {};
+  expect(TypeJS.getType(x)).toBe('Object');
 });

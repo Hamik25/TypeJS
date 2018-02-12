@@ -1,6 +1,6 @@
 {
   "name": " js-type-helper",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "description here",
   "main": "./index.js",
   "module": "./src/index.js",
